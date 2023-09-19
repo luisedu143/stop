@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopots - Tela de Entrada</title>
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="inputScreen">
+        <h1>Bem-vindo ao Stopots!</h1>
+        <label for="playerName">Digite seu nome:</label>
+        <input type="text" id="playerName">
+        <button id="startGame">Iniciar Jogo</button>
+    </div>
+
+    <div id="confirmationScreen" class="hidden">
+        <h2>Tela de Confirmação</h2>
+        <p>Seu nome é: <span id="playerNameConfirmation"></span></p>
+    </div>
+
+    <script>
+        const playerNameInput = document.getElementById('playerName');
+        const startGameButton = document.getElementById('startGame');
+        const inputScreen = document.getElementById('inputScreen');
+        const confirmationScreen = document.getElementById('confirmationScreen');
+        const playerNameConfirmation = document.getElementById('playerNameConfirmation');
+
+        startGameButton.addEventListener('click', () => {
+            const playerName = playerNameInput.value.trim();
+
+            if (playerName !== '') {
+                // Exibe a tela de confirmação e define o nome do jogador
+                playerNameConfirmation.textContent = playerName;
+                confirmationScreen.classList.remove('hidden');
+
+                // Oculta a tela de entrada
+                inputScreen.classList.add('hidden');
+            } else {
+                alert('Por favor, insira seu nome.');
+            }
+        });
+    </script>
+</body>
+</html>
